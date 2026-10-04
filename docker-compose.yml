@@ -1,0 +1,12 @@
+services:
+  japan-plan-ui:
+    image: ghcr.io/${IMAGE_OWNER}/japan-plan:latest
+    restart: unless-stopped
+    # No published ports: Caddy (from callsheet-deploy) reaches this over the shared "web" network.
+    networks:
+      - web
+
+networks:
+  web:
+    external: true
+    name: web
